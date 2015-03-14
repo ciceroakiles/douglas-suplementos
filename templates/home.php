@@ -11,14 +11,12 @@ include '../include/header.php';
         <link rel="stylesheet" type="text/css" href="css/style_geral.css">
     </head>
     <body>
-        <?php if ($nivel == 0) { ?>
-            <p>usuario comum entrou...</p>
-        <?php
-        } else {
-            if ($nivel == 1) {
-                ?>
-                <p>usuario avançado...</p>
-    <?php }
-} ?>
+        
+        <?php if ($_SESSION["nivel"] == 1) { ?>
+        <p>Usuario avançado</p>
+        <?php } else { ?>
+        <p>Usuario comum...</p>
+        <?php } ?>
+
     </body>
 </html>
