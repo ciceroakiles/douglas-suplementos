@@ -1,6 +1,7 @@
 <?php
 
 include '../classes/conexao.php';
+include '../classes/controle_acesso.php';
 
 //Starts
 ob_start();
@@ -11,6 +12,7 @@ $home = "login.php";
 $title = "Cheype - fix & Solution";
 $user = "";
 $acao = "";
+$logado = 0;
 
 $conexao = new conexao("localhost", "root", "", "ds");
 $conexao->abrirConexão();
@@ -21,36 +23,40 @@ if (isset($_GET["acao"])) {
 
 //Método de cadastrar usuário
 if ($acao == "cadastrar") {
-    include '../classes/cadastro.php';
+    $classCadastro = new controle_acesso();
     
-    $classeCadastro = new cadastro(addslashes($_POST["email"]), addslashes($_POST["login"]), addslashes($_POST["senha"]));
+    $classCadastro->setEmail(addslashes($_POST["email"]));
+    $classCadastro->setLogin(addslashes($_POST["login"]));
+    $classCadastro->setSenha(addslashes(md5($_POST["senha"])));
+
+    $classCadastro->salvandoLogin();
     
-    if ($classeCadastro->verificaConteudo()) {
-        if ($classeCadastro->verificaEmail()) {
-            $classeCadastro->salvando();
-        }
-    }
-    
-    $msg = $classeCadastro->getMsg();
+    $msg = $classCadastro->getMsg();
 }
 
 //Método de logar
 if ($acao == "login") {
-    include '../classes/login.php';
+    $classLogin = new controle_acesso();
+    
+    $classLogin->setLogin(addslashes($_POST["login"]));
+    $classLogin->setSenha(addslashes(md5($_POST["senha"])));
 
-    $classeLogin = new login(addslashes($_POST["login"]), md5($_POST["senha"]));
+    $classLogin->validandoLogin();
 
-    if (!($classeLogin->verificaConteudo())) {
+    if (empty($classLogin->getMsg())) {
+        $dados = $classLogin->getRegistro_tabela();
+        
+        $_SESSION ["login"] = $dados["login"];
+        $_SESSION ["senha"] = $dados["senha"];
+        $_SESSION ["nivel"] = $dados["nivel"];
 
-        if ($classeLogin->validandoAcesso()) {
-            setcookie("logado", 1);
-            $log = 1;
-
-            echo "<meta HTTP-EQUIV='refresh' content='0; url=home.php'>";
-        }
+        setcookie("logado", 1);
+        $log = 1;
+        
+        echo "<meta HTTP-EQUIV='refresh' content='0; url=home.php'>";
+    }else{
+        $msg = $classLogin->getMsg();
     }
-
-    $msg = $classeLogin->getMsg();
 }
 
 //Método de checar usuário
