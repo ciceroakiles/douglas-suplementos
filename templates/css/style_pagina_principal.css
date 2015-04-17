@@ -1,0 +1,89 @@
+html {
+    background-color: #efefef;
+}
+
+/* estilo correspondente a barra de busca */
+#buscar_produto {
+    margin-top: 0px;
+    height: 65px;
+    background-color: #00695C;
+}
+
+#conteudo_buscar {
+    position: relative;
+    top: 0px;
+    left: 50%;
+    height: 65px;
+    width: 400px;
+    margin-left: -200px;
+}
+
+#input_buscar_principal {
+    position: relative;
+    margin: 0px;
+    border: none;
+    border-bottom: 2px solid #fff;
+    width: 300px;
+    height: 30px;
+    background-color: transparent;
+    padding: 0px 10px;
+    color: #fff;
+    outline: none;
+    font-size: 18px;
+}
+
+#input_buscar_principal::-webkit-input-placeholder  {
+    color:#fff; font-size: 18px;
+}
+
+#input_botao_buscar {
+    position: relative;
+    top: 7px;
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    border-radius: 40px;
+    background: #fff url('../..//imagem/lupa.svg') no-repeat center center;
+    border: 13px solid #fff;
+    outline: none;
+}
+
+/* Conteúdo complementar lado esquerdo */
+
+#conteudo_complementar {
+    position: absolute;
+    top: 135px;
+    left: 10%;
+    width: 200px;
+    border: 1px solid #c2c2c2;
+    border-radius: 3px;
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+/* Blocos que estão dentro do Conteudo complementar */
+
+.blocos_conteudo_complementar {
+    display: block;
+    width: 200px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #757575;
+}
+
+.cabecalho_bloco_conteudo_complementar {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.radio_blocos_conteudo_complementar {
+    margin: 0px;
+    margin-left: 20px;
+    height: 13px;
+    width: 13px;
+}
+
+#fieldset_blocos_conteudo {
+    border: none;
+    border-top: 2px solid #757575;
+    border-radius: 3px;
+}

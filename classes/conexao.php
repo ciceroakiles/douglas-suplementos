@@ -25,9 +25,4 @@ class conexao {
         return $this->selecionarBd();
 
     }
-    
-    public function fecharConexão() {
-        mysql_close();
-    }
-
 }

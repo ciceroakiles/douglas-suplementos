@@ -53,9 +53,45 @@ input {
     padding: 5px;
 }
 
+/* Estilo da pagina principal */
+
+#header_principal {
+    height: 70px;
+    width: 100%;
+    background-color: #fff;
+}
+
+#logo_cabecalho_principal {
+    height: 60px;
+    margin-top: 5px;
+    margin-left: 10%;
+}
+
+#menu_principal {
+    position: absolute;
+    right: 10%;
+    top: 0px;
+    height: 70px;
+}
+
+.botao_menu_principal {
+    position: relative;
+    display: inline-block;
+    margin: 0px 1px;
+    padding: 26px 15px;
+    font-size: 15px;
+}
+
+.botao_menu_principal:hover {
+    background-color: #c2c2c2;
+}
+
 .input_botao:hover {
     cursor: pointer;
 }
+
+
+/* Fim do Estilo da pagina principal*/
 
 .animacao:hover {
     transition: all 0.3s linear;
