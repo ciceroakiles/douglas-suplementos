@@ -1,3 +1,7 @@
+html {
+    background-color: #efefef;
+}
+
 html, body, figure, ul, ol, li{
     margin: 0px;
     padding: 0px;
@@ -15,6 +19,8 @@ a {
     padding: 30px;
     border: 2px solid #efefef;
     border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 0 15px #000;
 }
 
 input {
@@ -90,6 +96,14 @@ input {
     cursor: pointer;
 }
 
+#footer_pagina_principal {
+    margin: 10px 0px 0px;
+    padding: 20px 0px;
+    text-align: right;
+    width: 100%;
+    background-color: #263238;
+    color: #fff;
+}
 
 /* Fim do Estilo da pagina principal*/
 

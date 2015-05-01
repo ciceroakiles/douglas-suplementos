@@ -1,0 +1,81 @@
+/* Estilo referente o cabeçalho da pagina */
+
+#header_principal {
+    border-bottom: 2px solid #9c9c9c;
+}
+
+/* Estilo referente a descrição do produto */
+
+#titulo_produto {
+    margin-top: 55px;
+    text-align: center;
+    width: 100%;
+    color: #212121;
+}
+
+#imagem_produto {
+    position: relative;
+    top: 20px;
+    left: 10%;
+    height: 400px;
+    width: 400px;
+    border: 2px solid #212121;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+#box_informacao_basica {
+    position: absolute;
+    top: 195px;
+    left: 10%;
+    right: 10%;
+    margin-left: 420px;
+    height: 400px;
+    border-bottom: 2px solid #212121;
+}
+
+#botao_comprar {
+    position: relative;
+    top: 120px;
+    left: 50%;
+    margin-left: -116px;
+    padding: 10px 75px;
+    width: 85px;
+    background-color: #162182;
+    color: #fff;
+    font-size: 20px;
+    box-shadow: 0 0 8px #757575;
+}
+
+#botao_comprar:hover {
+    -webkit-transition: 0.2s linear;
+    transform: scale(1.1);
+}
+
+#valor_produto {
+    margin-top: 150px;
+    margin-left: 25px;
+    color: #00695C;
+}
+
+#descricao_produto_limitada {
+    margin-top: 40px;
+}
+
+/* Especificações tecnicas */
+#detalhes_tecnicos_produtos {
+    position: relative;
+    width: 100%;
+}
+
+#detalhes_tecnicos_produtos_marcador {
+    margin: 50px 10% 0px;
+    color: #00695C;
+    border-bottom: 2px solid #00695C;
+}
+
+#detalhes_tecnicos_produtos_descricao {
+    margin: 15px 10%;
+    padding-left: 10px;
+}
+

@@ -1,0 +1,10 @@
+
+
+#janela_conteudo {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    height: 200px;
+    width: 100%;
+    margin-top: 5px;
+}

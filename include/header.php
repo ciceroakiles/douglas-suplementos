@@ -12,10 +12,9 @@ $home = "login.php";
 $title = "Cheype - fix & Solution";
 $user = "";
 $acao = "";
-$logado = 0;
 
-$conexao = new conexao("localhost", "root", "", "ds");
-$conexao->abrirConexão();
+$conexao = new conexao();
+$conexao->abrirConexao();
 
 if (isset($_GET["acao"])) {
     $acao = $_GET["acao"];
@@ -53,7 +52,7 @@ if ($acao == "login") {
         setcookie("logado", 1);
         $log = 1;
         
-        echo "<meta HTTP-EQUIV='refresh' content='0; url=home.php'>";
+        echo "<meta HTTP-EQUIV='refresh' content='0; url=pag_administrador.php'>";
     }else{
         $msg = $classLogin->getMsg();
     }
@@ -69,7 +68,7 @@ if (isset($_SESSION["login"]) && isset($_SESSION["senha"])) {
 if ($acao == "logout") {
     setcookie("logado", "");
     unset($_SESSION["login"], $_SESSION["senha"], $_SESSION["nivel"]);
-    echo "<meta HTTP-EQUIV='refresh' content='0; url=login.php'>";
+    echo "<meta HTTP-EQUIV='refresh' content='0; url=pagina_principal.php'>";
 }
 
 //Variáveis de estilo
