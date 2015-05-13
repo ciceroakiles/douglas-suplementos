@@ -50,6 +50,7 @@ if ($acao == "login") {
         $_SESSION ["nivel"] = $dados["nivel"];
 
         setcookie("logado", 1);
+        setcookie("nivel", $dados["nivel"]);
         $log = 1;
         
         echo "<meta HTTP-EQUIV='refresh' content='0; url=pag_administrador.php'>";
@@ -70,6 +71,7 @@ if ($acao == "logout") {
     unset($_SESSION["login"], $_SESSION["senha"], $_SESSION["nivel"]);
     echo "<meta HTTP-EQUIV='refresh' content='0; url=pagina_principal.php'>";
 }
+
 
 //Variáveis de estilo
 if (empty($msg)) {

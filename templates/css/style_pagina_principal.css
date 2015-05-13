@@ -1,35 +1,25 @@
-/* estilo correspondente a barra de busca */
-#buscar_produto {
-    margin-top: 0px;
-    height: 65px;
-    background-color: #00695C;
-}
-
+/* estilo correspondente a barra de pesquisa */
 #conteudo_buscar {
     position: relative;
-    top: 0px;
     left: 50%;
-    height: 65px;
+    top: 0px;
     width: 400px;
+    height: 65px;
     margin-left: -200px;
+    margin-bottom: 20px;
 }
 
 #input_buscar_principal {
     position: relative;
     margin: 0px;
     border: none;
-    border-bottom: 2px solid #fff;
-    width: 300px;
+    border-bottom: 2px solid #2a2a2a;
+    width: 270px;
     height: 30px;
     background-color: transparent;
     padding: 0px 10px;
-    color: #fff;
+    color: #2a2a2a;
     outline: none;
-    font-size: 18px;
-}
-
-#input_buscar_principal::-webkit-input-placeholder  {
-    color:#fff;
     font-size: 18px;
 }
 
@@ -46,61 +36,11 @@
     cursor: pointer;
 }
 
-/* Conteúdo complementar lado esquerdo */
-
-#conteudo_complementar {
-    width: 205px;
-    border-radius: 3px;
-    position: relative;
-    left: 10%;
-    top: 10px;
-    float: left;
-    z-index: 10;
-    background-color: transparent;
-}
-
-/* Blocos que estão dentro do Conteudo complementar */
-
-.blocos_conteudo_complementar {
-    width: 200px;
-    padding-bottom: 25px;
-    border: 2px solid #c2c2c2;
-    border-radius: 3px;
-    margin: 0px 0px 5px;
-    background-color: #fff;
-    box-shadow: 0 0 8px #9c9c9c;
-}
-
-.cabecalho_bloco_conteudo_complementar {
-    height: 30px;
-    width: 190px;
-    margin: 0px 0px 5px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    background-color: #ECEFF1;
-    padding-left: 10px;
-    padding-top: 10px;
-    font-size: 14px;
-}
-
-.radio_blocos_conteudo_complementar {
-    margin: 0px;
-    margin-left: 20px;
-    height: 13px;
-    width: 13px;
-}
-
-#fieldset_blocos_conteudo {
-    border: none;
-    border-top: 2px solid #757575;
-    border-radius: 3px;
-}
 
 /* Estilo para o espaço referente aos produtos */
 
 #espaco_produtos {
     margin: 10px 10%;
-    padding-left: 220px;
     position: relative;
     z-index: 1;
 }
@@ -117,14 +57,14 @@
 
 .exibindo_produto {
     display: inline-block;
-    height: 400px;
+    height: 340px;
     width: 200px;
     border: 2px solid #c2c2c2;
     border-radius: 3px;
     background-color: #fff;
-    text-align: center;
     vertical-align: top;
     margin-bottom: 3px;
+    padding: 5px;
     box-shadow: 0 0 8px #9c9c9c;
 }
 
@@ -137,7 +77,6 @@
 .imagem_produto {
     height: 200px;
     width: 200px;
-    margin-top: 15px;
 }
 
 .descrisao_produto {
@@ -149,17 +88,19 @@
 .nome_produto {
     margin-top: 0px;
     margin-bottom: 2px;
+    margin-left: 5px;
 }
 
 .informacao_produto {
     margin: 0px;
     font-size: 10px;
     text-align: justify;
-    height: 110px;
+    height: 70px;
 }
 
 .valor_produto {
     float: right;
     color: #2196F3;
+    margin-right: 10px;
 }
 

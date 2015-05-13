@@ -19,7 +19,7 @@ include '../include/header.php';
 
             <form action="" method="post">
                 <label for="email">Email: </label>
-                <input type="text" id="email" maxlength="50" name="email" value="" />
+                <input type="text" id="email" maxlength="50" name="email" value="" autofocus />
                 
                 <label for="login">Login: </label>
                 <input type="text" id="login" maxlength="50" name="login" value="" />

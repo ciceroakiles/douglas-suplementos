@@ -1,5 +1,6 @@
 <?php
 include '../include/header.php';
+
 ?>
 
 
@@ -15,10 +16,11 @@ include '../include/header.php';
     <body>
 
         <div id="espaco">
+            <div class="mensage">Acesso exclusivo ao administrador!</div>
             <div class="mensage" style="<?php echo $display_message; ?>"><?php echo $msg; ?></div>
             <form action="" method="post">
                 <label for="login">Login: </label>
-                <input type="text" id="login" maxlength="50" name="login" value="" />
+                <input type="text" id="login" maxlength="50" name="login" value="" autofocus />
 
                 <label for="senha" >Senha: </label>
                 <input type="password" id="senha" maxlength="50" name="senha" value="" />

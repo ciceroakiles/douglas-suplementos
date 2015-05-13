@@ -7,9 +7,9 @@ class conexao {
     private $bd;
 
     function conexao() {
-        $this->host = "127.0.0.1:3306";
+        $this->host = "localhost";
         $this->user = "root";
-        $this->pass = "senharoot";
+        $this->pass = "";
         $this->bd = "ds";
     }
 

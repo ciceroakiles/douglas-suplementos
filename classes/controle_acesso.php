@@ -9,12 +9,6 @@ class controle_acesso {
     private $senha;
     private $msg = "";
 
-    private function verificandoStatus($dados) {
-        if (!($dados["status"] == '1')) {
-            $this->msg = "Aguarde a nossa aprovação!!";
-        }
-    }
-
     public function validandoLogin() {
         $this->msg = "";
 
@@ -24,7 +18,6 @@ class controle_acesso {
             $this->query = mysql_query("SELECT * FROM usuario WHERE login = '$this->login' AND senha = '$this->senha' LIMIT 1");
             if (mysql_num_rows($this->query) == 1) {
                 $this->registro_tabela = mysql_fetch_array($this->query);
-                $this->verificandoStatus($this->registro_tabela);
             } else {
                 $this->msg = "Usuário ou Senha incorreta!";
             }
@@ -33,7 +26,7 @@ class controle_acesso {
 
     private function usuarioExistente($num) {
         if ($num == 0) {
-            $this->query = mysql_query("INSERT INTO usuario (email, login, senha, nivel, status) VALUES ('$this->email', '$this->login', '$this->senha', 0, 1)");
+            $this->query = mysql_query("INSERT INTO usuario (email, login, senha, nivel) VALUES ('$this->email', '$this->login', '$this->senha', 0)");
             if (!(isset($this->query))) {
                 $this->msg = "Usuario não cadastrado";
             } else {

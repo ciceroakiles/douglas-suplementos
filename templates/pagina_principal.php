@@ -69,46 +69,46 @@ include '../include/produto.php';
         <section id="espaco_produtos">
 
             <?php
-            $produtos = mysql_query("SELECT * FROM produto WHERE nome_1 LIKE '%$filtro%' ORDER BY id_produto DESC");
-            $quant = mysql_num_rows($produtos);
+            $usuarios = mysql_query("SELECT * FROM produto WHERE nome_1 LIKE '%$filtro%' ORDER BY id_produto DESC");
+            $quant = mysql_num_rows($usuarios);
 
             if ($quant == 0) {
                 ?>
 
-            <div id="msg_produtos">
-                Nenhum produto encontrado... :(
-            </div>
-            
-            <div style="margin-top: 20px; margin-bottom: 10px; font-size: 19px;">
-                <strong>VEJA BEM, temos outras ofertas!<strong>
-            </div>
+                <div id="msg_produtos">
+                    Nenhum produto encontrado... :(
+                </div>
 
-                <?php
-                $produtos = mysql_query("SELECT * FROM produto ORDER BY id_produto DESC");
-            }
+                <div style="margin-top: 20px; margin-bottom: 10px; font-size: 19px;">
+                    <strong>VEJA BEM, temos outras ofertas!<strong>
+                            </div>
 
-            while ($item = mysql_fetch_array($produtos)) {
-                ?>
+                            <?php
+                            $usuarios = mysql_query("SELECT * FROM produto ORDER BY id_produto DESC");
+                        }
 
-            <a href = "exibindo_produto.php?acao=exibe_produto&amp;get_produto=<?php echo $item["id_produto"] ?>" class = "exibindo_produto">
-                    <img src = "../imagem/img_modelo.svg" class = "imagem_produto" alt = "produto">
+                        while ($item = mysql_fetch_array($usuarios)) {
+                            ?>
 
-                    <div class = "descrisao_produto">
-                        <h2 class = "nome_produto"><?php echo $item["nome_1"] ?></h2>
+                            <a href = "exibindo_produto.php?acao=exibe_produto&amp;get_produto=<?php echo $item["id_produto"] ?>" class = "exibindo_produto">
+                                <img src = "../imagem/img_modelo.svg" class = "imagem_produto" alt = "produto">
 
-                        <p class = "informacao_produto">
-                            <?php echo $item["descricao_1"] ?>
-                        </p>
+                                <div class = "descricao_produto">
+                                    <h2 class = "nome_produto"><?php echo $item["nome_1"] ?></h2>
 
-                        <p class = "valor_produto"><b><?php echo $item["valor"] ?></b></p>
-                    </div>
-                </a>
-            <?php } ?>
+                                    <p class = "informacao_produto">
+                                        <?php echo $item["descricao_1"] ?>
+                                    </p>
 
-        </section>
+                                    <p class = "valor_produto"><b><?php echo $item["valor"] ?></b></p>
+                                </div>
+                            </a>
+                        <?php } ?>
 
-        <footer id="footer_pagina_principal">
-            <p style="margin: 0px; padding: 0px; margin-right: 20px">Desenvolvido por: 4SIsystem</p>
-        </footer>
-    </body>
-</html>
+                        </section>
+
+                        <footer id="footer_pagina_principal">
+                            <p style="margin: 0px; padding: 0px; margin-right: 20px">Desenvolvido por: 4SIsystem</p>
+                        </footer>
+                        </body>
+                        </html>
