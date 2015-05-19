@@ -1,5 +1,30 @@
 <?php
-include '../include/produto.php';
+//Starts
+ob_start();
+session_start();
+
+include '../classes/conexao.php';
+include '../classes/produto.php';
+include '../classes/controle_acesso.php';
+
+$conexao = conexao::getObject();
+$acesso = controle_acesso::getObject();
+$class_produto = produto::getObject();
+
+$conexao->abrirConexao();
+$acao = "";
+
+if (isset($_GET["acao"])) {
+    $acao = $_GET["acao"];
+}
+
+if ($acao == "filtro_produto") {
+    $class_produto->setFiltro(addslashes($_POST["buscar"]));
+}
+
+if ($acao == "exibe_produto") {
+    $class_produto->setProduto(addslashes($_GET["get_produto"]));
+}
 ?>
 
 
@@ -15,25 +40,10 @@ include '../include/produto.php';
     </head>
     <body>
 
-        <header id="header_principal">
-            <img src="../imagem/logo_suplemento.jpg" alt="logo" title="home" id="logo_cabecalho_principal">
+        <?php include './cabecalho.php'; ?>
 
-            <nav id="menu_principal">
-                <a href="../templates/pagina_principal.php">
-                    <div class="botao_menu_principal">Home</div>
-                </a>
+        <section id="espaco_produtos">
 
-                <a href="#">
-                    <div class="botao_menu_principal">Sobre Nós</div>
-                </a>
-
-                <a href="pag_administrador.php">
-                    <div class="botao_menu_principal">Entrar</div>
-                </a>
-            </nav>
-        </header>
-
-        <section id="buscar_produto">
             <form action="" method="post">
                 <div id="conteudo_buscar">
                     <input type="text" id="input_buscar_principal" name="buscar" placeholder="Buscar" />
@@ -41,34 +51,9 @@ include '../include/produto.php';
                     <input type="submit" formaction="pagina_principal.php?acao=filtro_produto" value="" id="input_botao_buscar" formaction=""  />
                 </div>
             </form>
-        </section>
-
-        <aside id="conteudo_complementar">
-            <section class="blocos_conteudo_complementar">
-                <h2 class="cabecalho_bloco_conteudo_complementar">Filtro</h2>
-
-                <form action="" method="post">
-                    <fieldset id="fieldset_blocos_conteudo">
-                        <legend>Valor: </legend>
-                        <input type="radio" name="radio" id="radio1" value="radio1" class="radio_blocos_conteudo_complementar" />
-                        <label for="radio1">10,00 - 100,00</label><br />
-
-                        <input type="radio" name="radio" id="radio2" value="radio2" class="radio_blocos_conteudo_complementar" />
-                        <label for="radio2">100,00 - 200,00</label>
-                    </fieldset>
-
-                    <input type="button" formaction="pagina_principal.php" value="Filtrar" style="cursor: pointer;"/>
-                </form>
-            </section>
-
-            <section class="blocos_conteudo_complementar">
-                <h2 class="cabecalho_bloco_conteudo_complementar">Patrocínio</h2>
-            </section>
-        </aside>
-
-        <section id="espaco_produtos">
 
             <?php
+            $filtro = $class_produto->getFiltro();
             $usuarios = mysql_query("SELECT * FROM produto WHERE nome_1 LIKE '%$filtro%' ORDER BY id_produto DESC");
             $quant = mysql_num_rows($usuarios);
 
@@ -86,25 +71,25 @@ include '../include/produto.php';
                             <?php
                             $usuarios = mysql_query("SELECT * FROM produto ORDER BY id_produto DESC");
                         }
+                        ?>
 
-                        while ($item = mysql_fetch_array($usuarios)) {
-                            ?>
+                        <ul style="list-style-type: none;">
+                            <?php
+                            while ($item = mysql_fetch_array($usuarios)) {
+                                ?>
+                                <a href="exibindo_produto.php?acao=exibe_produto&amp;get_produto=<?php echo $item["id_produto"] ?>">
+                                    <li class="item_produto">
+                                        <img src = "../imagem/img_modelo.svg" class = "imagem_produto" alt = "produto">
 
-                            <a href = "exibindo_produto.php?acao=exibe_produto&amp;get_produto=<?php echo $item["id_produto"] ?>" class = "exibindo_produto">
-                                <img src = "../imagem/img_modelo.svg" class = "imagem_produto" alt = "produto">
+                                        <div class="item_conteudo_descricao">
+                                            <h2 class="item_nome"><?php echo $item["nome_2"]; ?></h2>
 
-                                <div class = "descricao_produto">
-                                    <h2 class = "nome_produto"><?php echo $item["nome_1"] ?></h2>
-
-                                    <p class = "informacao_produto">
-                                        <?php echo $item["descricao_1"] ?>
-                                    </p>
-
-                                    <p class = "valor_produto"><b><?php echo $item["valor"] ?></b></p>
-                                </div>
-                            </a>
-                        <?php } ?>
-
+                                            <p class="item_valor"><strong><?php echo $item["valor"]; ?></strong></p>
+                                        </div>
+                                    </li>
+                                </a>
+                            <?php } ?>
+                        </ul>
                         </section>
 
                         <footer id="footer_pagina_principal">

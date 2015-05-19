@@ -1,12 +1,12 @@
-/* Estilo referente o cabeçalho da pagina */
-
-#header_principal {
-    border-bottom: 2px solid #9c9c9c;
-}
 
 /* Estilo referente a descrição do produto */
 
+#titulo_produto_campo {
+    padding: 0px 10%;
+}
+
 #titulo_produto {
+    margin: 0px;
     margin-top: 55px;
     text-align: center;
     width: 100%;

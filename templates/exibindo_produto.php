@@ -1,7 +1,23 @@
 <?php
+//Starts
+ob_start();
+session_start();
 
-include '../include/produto.php';
+include '../classes/conexao.php';
+include '../classes/produto.php';
+include '../classes/controle_acesso.php';
 
+$conexao = conexao::getObject();
+$acesso = controle_acesso::getObject();
+$class_produto = produto::getObject();
+
+$conexao->abrirConexao();
+
+if (isset($_GET["get_produto"])) {
+    $class_produto->setProduto($_GET["get_produto"]);
+}
+
+$get_produto = $class_produto->getProduto();
 $produto = mysql_fetch_array(mysql_query("SELECT * FROM produto WHERE id_produto = '$get_produto'"));
 ?>
 
@@ -16,26 +32,12 @@ $produto = mysql_fetch_array(mysql_query("SELECT * FROM produto WHERE id_produto
         <link rel="stylesheet" type="text/css" href="css/style_exibindo_produto.css">
     </head>
     <body>
-        <header id="header_principal">
-            <img src="../imagem/logo_suplemento.jpg" alt="logo" title="home" id="logo_cabecalho_principal">
 
-            <nav id="menu_principal">
-                <a href="../templates/pagina_principal.php">
-                    <div class="botao_menu_principal">Home</div>
-                </a>
+        <?php include './cabecalho.php'; ?>
 
-                <a href="#">
-                    <div class="botao_menu_principal">Sobre Nós</div>
-                </a>
-
-                <a href="login.php">
-                    <div class="botao_menu_principal">Entrar</div>
-                </a>
-            </nav>
-        </header>
-
-        <h1 id="titulo_produto"><?php echo $produto["nome_2"] ?></h1>
-
+        <section id="titulo_produto_campo">
+            <h1 id="titulo_produto"><?php echo $produto["nome_2"] ?></h1>
+        </section>
         <img src="../imagem/img_modelo.svg" id="imagem_produto" alt="imagem_produto">
 
         <div id="box_informacao_basica" >

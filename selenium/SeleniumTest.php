@@ -30,19 +30,16 @@ class SeleniumTest extends PHPUnit_Extensions_SeleniumTestCase {
         $search = "Fiat";
         $this->type("css=input#input_buscar_principal", $search);
         $this->click("css=input#input_botao_buscar");
-        $this->assertContains($search, strtoupper($this->getText("css=h2.nome_produto")));
+        $this->assertContains($search, ($this->getText("css=h2.item_nome")));
 
         // Teste de login
         $login = "admin";
         $senha = "admin";
-        $this->open("http://localhost/douglas_suplementos/templates/login.php");
+        $this->type("css=input#login.campos_login", $login);
+        $this->type("css=input#senha.campos_login", $senha);
+        $this->click("css=input#botao_entrar");
         $this->waitForPageToLoad();
-        $this->assertEquals('DS - Suplemento', $this->getTitle());
-        $this->type("css=input#login", $login);
-        $this->type("css=input#senha", $senha);
-        $this->click("css=input.botao.animacao");
-        $this->waitForPageToLoad();
-        $this->assertEquals('Vendas de suplemento', $this->getTitle());
+        $this->assertContains('admin', $this->getText("css=div#logado"));
     }
 
 }

@@ -30,7 +30,7 @@ input {
 }
 
 .logo {
-    width: 180px
+    width: 180px;
 }
 
 .mensage {
@@ -41,13 +41,6 @@ input {
     padding: 5px 0px;
     text-align: center;
     margin-bottom: 10px;
-}
-
-#menu {
-    position: absolute;
-    top: 422px;
-    padding-left: 25px;
-    width: 685px;
 }
 
 .input_botao {
@@ -73,23 +66,63 @@ input {
     margin-left: 10%;
 }
 
-#menu_principal {
+#logar {
     position: absolute;
+    top: 10px;
     right: 10%;
-    top: 0px;
-    height: 70px;
+    float: right;
+    width: 350px;
+    vertical-align: top;
+}
+
+#logado {
+    position: absolute;
+    top: 20px;
+    right: 10%;
+    float: right;
+}
+
+.suporte_login {
+    margin: 0px;
+    margin-top: 3px;
+    padding: 0px;
+}
+
+#botao_entrar {
+    background-color: #00695C;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    height: 30px;
+    box-shadow: 0 0 1px black;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.campos_login {
+    width: 140px;
+    height: 17px;
+    margin: 0px;
+}
+
+#barra_menu {
+    margin-top: 0px;
+    padding: 0px 10%;
+    height: 55px;
+    background-color: #00695C;
 }
 
 .botao_menu_principal {
     position: relative;
     display: inline-block;
     margin: 0px 1px;
-    padding: 26px 15px;
+    padding: 18.5px 15px;
     font-size: 15px;
 }
 
 .botao_menu_principal:hover {
-    background-color: #c2c2c2;
+    background-color: #2a2a2a;
+    color: #fff;
 }
 
 .input_botao:hover {

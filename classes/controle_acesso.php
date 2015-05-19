@@ -3,21 +3,37 @@
 class controle_acesso {
 
     private $query;
-    private $registro_tabela;
     private $email;
     private $login;
     private $senha;
     private $msg = "";
+    private $logado = 0;
+    private $nivel;
+    private $registro_tabela;
+    private static $instance;
 
+    protected function __construct() {
+        //Thou shalt not construct that which is unconstructable!
+    }
+
+    static function getObject() {
+        if (!isset(self::$instance)) {
+            self::$instance = new self;
+        }
+        return self::$instance;
+    }
+    
     public function validandoLogin() {
         $this->msg = "";
-
+        
         if (empty($this->login) || empty($this->senha)) {
             $this->msg = "Preencha todos os campos!";
         } else {
             $this->query = mysql_query("SELECT * FROM usuario WHERE login = '$this->login' AND senha = '$this->senha' LIMIT 1");
             if (mysql_num_rows($this->query) == 1) {
                 $this->registro_tabela = mysql_fetch_array($this->query);
+                $this->nivel = $this->registro_tabela["nivel"];
+                $this->logado = 1;
             } else {
                 $this->msg = "Usuário ou Senha incorreta!";
             }
@@ -70,6 +86,14 @@ class controle_acesso {
 
     function setSenha($senha) {
         $this->senha = $senha;
+    }
+    
+    function getLogado() {
+        return $this->logado;
+    }
+
+    function getNivel() {
+        return $this->nivel;
     }
 
 }
