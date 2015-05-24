@@ -3,21 +3,21 @@
 ob_start();
 session_start();
 
-include '../classes/conexao.php';
-include '../classes/produto.php';
-include '../classes/controle_acesso.php';
-
-$acesso = controle_acesso::getObject();
-$conexao = conexao::getObject();
-$class_produto = produto::getObject();
-
-$conexao->abrirConexao();
-$acao = "";
-
-include '../include/controle_pag_administrador.php';
 
 if (isset($_COOKIE["logado"])) {
-    
+
+    include '../classes/conexao.php';
+    include '../classes/produto.php';
+    include '../classes/controle_acesso.php';
+
+    $acesso = controle_acesso::getObject();
+    $conexao = conexao::getObject();
+    $class_produto = produto::getObject();
+
+    $conexao->abrirConexao();
+    $acao = "";
+
+    include '../include/controle_pag_administrador.php';
     ?>
 
     <!DOCTYPE html>
@@ -37,14 +37,14 @@ if (isset($_COOKIE["logado"])) {
             <?php include './cabecalho.php'; ?>
 
             <section id="listando_produtos">
-                <h2 id="produtos_cabecalho">Listando produtos</h2>
+                <h2 class="produtos_cabecalho">Listando produtos</h2>
 
-                <table id="listando_produtos_tabela">
+                <table id="listando_produtos_tabela" style="border-collapse: collapse;">
                     <thead style="background-color: #c2c2c2; margin-bottom: 10px;">
                         <tr>
-                            <td style="width: 500px; padding: 5px 0px">Nome</td>
-                            <td style="width: 200px; padding: 5px 0px">Quantidade</td>
-                            <td style="width: 220px; padding: 5px 0px">Valor</td>
+                            <td style="width: 800px; padding: 5px 0px">Nome</td>
+                            <td style="width: 40px; padding: 5px 0px">Quant.</td>
+                            <td style="width: 120px; padding: 5px 0px">Valor</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,9 +63,9 @@ if (isset($_COOKIE["logado"])) {
 
                     while ($item = mysql_fetch_array($usuarios)) {
                         ?>
-                        <tr>
-                            <td>
-                                <a href="?acao=alterando_produto&amp;get_produto=<?php echo $item["id_produto"]; ?>"><?php echo $item["nome_1"]; ?></a>
+                        <tr class="linha_produtos">
+                            <td style="text-align: left">
+                                <a href="?acao=alterando_produto&amp;get_produto=<?php echo $item["id_produto"]; ?>"><?php echo $item["nome"]; ?></a>
                             </td>
                             <td><?php echo $item["quantidade"]; ?></td>
                             <td><?php echo $item["valor"]; ?></td>
@@ -77,24 +77,15 @@ if (isset($_COOKIE["logado"])) {
             </section>
 
             <section id="adicionar_produtos">
-                <h2 id="produtos_cabecalho">Adicionando produtos</h2>
+                <h2 class="produtos_cabecalho">Adicionando produtos</h2>
 
                 <form action="" method="post">
-                    <div style="width: 49%; display: inline-block; text-align: left;">
-                        <label for="nome_1">Primeiro nome do produto:</label>
-
-                        <input type="text" name="nome_1" id="nome_1" maxlength="15" value="<?php
-                        if (isset($produto)) {
-                            echo $produto["nome_1"];
-                        }
-                        ?>"/>
-                    </div>
 
                     <div style="width: 49%; display: inline-block;  text-align: left;" >
-                        <label for="nome_2">Segundo nome do produto:</label>
-                        <input type="text" name="nome_2" id="nome_2" maxlength="100" value="<?php
+                        <label for="nome">Nome do produto:</label>
+                        <input type="text" name="nome" id="nome" maxlength="100" value="<?php
                         if (isset($produto)) {
-                            echo $produto["nome_2"];
+                            echo $produto["nome"];
                         }
                         ?>"/>
                     </div>
@@ -119,30 +110,21 @@ if (isset($_COOKIE["logado"])) {
 
                     <div style="width: 32.4%; display: inline-block; text-align: left">
                         <label for="quant">Quantidade do produto:</label>
-                        <input type="number" name="quant" id="quant" value="<?php
+                        <input type="number" name="quant" id="quant" min="1" value="<?php
                         if (isset($produto)) {
                             echo $produto["quantidade"];
+                        }else{
+                            echo 1;
                         }
                         ?>"/>
                     </div>
 
-                    <div style="width: 49%; display: inline-block;  text-align: left; vertical-align: top">
-                        <fieldset style="background-color: #fff;">
-                            <legend>Descrição mínima do produto</legend>
-                            <textarea class="descricao" name="descricao_1" maxlength="150" style="height: 80px"><?php
-                                if (isset($produto)) {
-                                    echo $produto["descricao_1"];
-                                }
-                                ?></textarea>
-                        </fieldset>
-                    </div>
-
                     <div style="width: 49%; display: inline-block;  text-align: left;">
                         <fieldset style="background-color: #fff;">
-                            <legend>Descrição detalhada do produto</legend>
-                            <textarea class="descricao" name="descricao_2" ><?php
+                            <legend>Descrição do produto</legend>
+                            <textarea class="descricao" name="descricao" ><?php
                                 if (isset($produto)) {
-                                    echo $produto["descricao_2"];
+                                    echo $produto["descricao"];
                                 }
                                 ?></textarea>
                         </fieldset>
@@ -150,9 +132,11 @@ if (isset($_COOKIE["logado"])) {
 
                     <div style="width: 300px; text-align: left; margin-left: 35px">
                         <label for="valor">Valor do produto:</label>
-                        <input type="text" name="valor" id="valor" style="border: 1px solid #00695C; border-radius: 3px; background-color: #d6fed7; text-align: right;" maxlength="20" onkeyup="mascara(this, real)" value="<?php
+                        <input type="" name="valor" id="valor" style="border: 1px solid #00695C; border-radius: 3px; background-color: #d6fed7; text-align: right;" maxlength="20" onkeyup="mascara(this, real)" value="<?php
                         if (isset($produto)) {
                             echo $produto["valor"];
+                        }else{
+                            echo 0;
                         }
                         ?>"/>
                     </div>
@@ -168,9 +152,7 @@ if (isset($_COOKIE["logado"])) {
                 </form>
             </section>
 
-            <footer id="footer_pagina_principal">
-                <p style="margin: 0px; padding: 0px; margin-right: 20px">Desenvolvido por: 4SIsystem</p>
-            </footer>
+            <?php include './rodape.php'; ?>
         </body>
     </html>
 

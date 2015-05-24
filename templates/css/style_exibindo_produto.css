@@ -16,35 +16,37 @@
 #imagem_produto {
     position: relative;
     top: 20px;
-    left: 10%;
-    height: 400px;
-    width: 400px;
+    width: 39%;
     border: 2px solid #212121;
     border-radius: 3px;
     background-color: #fff;
+    box-shadow: 0 0 15px #212121;
+}
+
+#box_informacao_produto {
+    padding: 0px 10%;
 }
 
 #box_informacao_basica {
-    position: absolute;
-    top: 195px;
-    left: 10%;
-    right: 10%;
-    margin-left: 420px;
-    height: 400px;
-    border-bottom: 2px solid #212121;
+    width: 58%;
+    margin-left: 1%;
+    display: inline-block;
+    padding-top: 10px;
+    vertical-align: top;
 }
 
 #botao_comprar {
     position: relative;
-    top: 120px;
     left: 50%;
     margin-left: -116px;
-    padding: 10px 75px;
-    width: 85px;
+    width: 200px;
+    height: 50px;
     background-color: #162182;
     color: #fff;
     font-size: 20px;
     box-shadow: 0 0 8px #757575;
+    margin-top: 10px;
+    border: none;
 }
 
 #botao_comprar:hover {
@@ -53,13 +55,13 @@
 }
 
 #valor_produto {
-    margin-top: 150px;
     margin-left: 25px;
+    font-size: 30px;
     color: #00695C;
 }
 
 #descricao_produto_limitada {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 /* Especificações tecnicas */
@@ -80,3 +82,8 @@
     padding-left: 10px;
 }
 
+.mensage {
+    margin-top: 10px;
+    width: 100%;
+    padding: 15px 0;
+}

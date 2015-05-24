@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Tempo de geração: 01/05/2015 às 02:29
+-- Tempo de geração: 23/05/2015 às 02:30
 -- Versão do servidor: 5.6.21
 -- Versão do PHP: 5.6.3
 
@@ -23,29 +23,62 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `exercicio`
+--
+
+CREATE TABLE IF NOT EXISTS `exercicio` (
+`id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `semana` varchar(20) COLLATE utf8_swedish_ci NOT NULL,
+  `exercicio` varchar(30) COLLATE utf8_swedish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+--
+-- Fazendo dump de dados para tabela `exercicio`
+--
+
+INSERT INTO `exercicio` (`id`, `id_usuario`, `semana`, `exercicio`) VALUES
+(7, 13, 'Segunda-feira', 'agachamento'),
+(8, 15, 'Dom', 'texte 1'),
+(9, 15, 'Dom', 'teste 2'),
+(10, 15, 'dom', 'test 1'),
+(11, 15, 'seg', 'test 2'),
+(12, 15, 'ter', 'test 3'),
+(13, 15, 'qua', 'test 5'),
+(14, 15, 'qui', 'test 6'),
+(15, 15, 'sex', 'test 7'),
+(16, 15, 'sab', 'test 8'),
+(17, 15, 'ter', 'test 9'),
+(18, 15, 'qui', 'test 10'),
+(19, 15, 'sab', 'feira');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `produto`
 --
 
 CREATE TABLE IF NOT EXISTS `produto` (
 `id_produto` int(11) NOT NULL,
-  `nome_1` varchar(15) COLLATE utf8_swedish_ci NOT NULL,
-  `nome_2` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
+  `nome` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
   `modelo` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
   `categoria` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
   `quantidade` int(11) NOT NULL,
-  `descricao_1` varchar(150) COLLATE utf8_swedish_ci NOT NULL,
-  `descricao_2` text COLLATE utf8_swedish_ci NOT NULL,
-  `valor` varchar(20) COLLATE utf8_swedish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `descricao` text COLLATE utf8_swedish_ci NOT NULL,
+  `valor` float(11,2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Fazendo dump de dados para tabela `produto`
 --
 
-INSERT INTO `produto` (`id_produto`, `nome_1`, `nome_2`, `modelo`, `categoria`, `quantidade`, `descricao_1`, `descricao_2`, `valor`) VALUES
-(1, 'celular', 'Samsung Galaxy S4', 'Samsung', 'celular', 20, 'Um otimo celular', 'todas as especificações', 'R$ 1200,00'),
-(2, 'notebook', 'notebook Lenovo slim', 'g400s', 'notebook', 30, 'um otimo computador, fino, leve, rapido e bastante bonito.', 'Muitas caracteristicas...', 'R$ 1900,00'),
-(3, 'Fiat', 'Fiat uno mile', 'uno 2009', 'carro', 10, 'Um carro para ser usado onde e quando quiser', 'çalsdjfaçlsdfjaçsldkfjaçsldkfjaçsdlkfjaçdslkfjaçdkljaçsldkfjaçslkasnçlkvnaçovinaeorieanvçenvçlkbaeb oieav oia ejvoafvlkamçvjaeori vjaov oaijfoivaelkaner b epbe', 'R$ 20000,00');
+INSERT INTO `produto` (`id_produto`, `nome`, `modelo`, `categoria`, `quantidade`, `descricao`, `valor`) VALUES
+(4, 'Celular S4 mini, branco - 16gb', 'Galaxy', 'Celular', 18, 'Mesmo em miniatura ele é uma ótimo celular e consegue atender vários requisitos. \r\nTeste de caracteres: !@#$%*()ºª', 500.00),
+(5, 'Novo produto otimizado', 'produto', 'novo', 5, 'Refazendo totalmente a descrição', 120.00),
+(8, 'Um produto qualquer responsável pelo limite do máximo do nome do produto. Que é por volta de 150 car', 'asçdfjasdçlk', 'pocajçsldkfjp', 7, 'Nova descrição....', 50.00),
+(9, 'Notebook Lenovo', 'Notebook', 'computador', 3, 'Um ótimo dispositivo...', 200.00),
+(10, 'Fonte 19v para notebook', 'fonte', 'carregador', 10, 'Uma fonte universal.', 119.99),
+(11, 'Placa mãe', 'Placa mãe', 'componentes internos de computador', 2, 'Uma placa mãe que aceita o mais avançado processador.', 530.00);
 
 -- --------------------------------------------------------
 
@@ -59,22 +92,28 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `login` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
   `senha` varchar(50) COLLATE utf8_swedish_ci NOT NULL,
   `nivel` varchar(1) COLLATE utf8_swedish_ci NOT NULL,
-  `status` varchar(1) COLLATE utf8_swedish_ci NOT NULL
+  `saldo` float(11,2) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Fazendo dump de dados para tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `email`, `login`, `senha`, `nivel`, `status`) VALUES
-(12, 'teste@testeando.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', '0', '1'),
-(13, 'teste2@testando.com', 'admin2', '21232f297a57a5a743894a0e4a801fc3', '1', '1'),
-(14, 'teste@testeando.com', 'admin3', '21232f297a57a5a743894a0e4a801fc3', '0', '1'),
-(15, 'joaoeymard@hotmail.com', 'admin5', '21232f297a57a5a743894a0e4a801fc3', '0', '1');
+INSERT INTO `usuario` (`id_usuario`, `email`, `login`, `senha`, `nivel`, `saldo`) VALUES
+(12, 'teste@testeando.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', 50.00),
+(13, 'teste2@testando.com', 'admin2', '21232f297a57a5a743894a0e4a801fc3', '1', 1000.00),
+(14, 'teste@testeando.com', 'admin3', '21232f297a57a5a743894a0e4a801fc3', '0', 1800.00),
+(15, 'joaoeymard@hotmail.com', 'admin5', '21232f297a57a5a743894a0e4a801fc3', '0', 2600.00);
 
 --
 -- Índices de tabelas apagadas
 --
+
+--
+-- Índices de tabela `exercicio`
+--
+ALTER TABLE `exercicio`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `produto`
@@ -93,10 +132,15 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `exercicio`
+--
+ALTER TABLE `exercicio`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+--
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --

@@ -25,7 +25,7 @@
         } else {
             ?>
             <div id="logado">
-                Bem vindo: <?php echo $_SESSION["login"]?><br />
+                Bem vindo: <?php echo $_SESSION["login"] ?><br />
                 <a href="?acao=logout" style="color: #ff0000;">
                     sair
                 </a>
@@ -47,11 +47,19 @@
             if ($_COOKIE["nivel"] == 1) {
                 ?>
                 <a href="pagina_produto.php">
-                    <div class="botao_menu_principal animacao">Produto</div>
+                    <div class="botao_menu_principal animacao">Produtos</div>
                 </a>
 
-                <a href="#">
+                <a href="pagina_usuario.php">
                     <div class="botao_menu_principal animacao">Usuários</div>
+                </a>
+                <?php
+            }
+
+            if ($_COOKIE["nivel"] == 0) {
+                ?>
+                <a href="pagina_exercicio.php">
+                    <div class="botao_menu_principal animacao">Exercício</div>
                 </a>
                 <?php
             }
@@ -97,6 +105,7 @@ if ($acao == "login") {
     if (empty($acesso->getMsg())) {
         $dados = $acesso->getRegistro_tabela();
 
+        $_SESSION ["id"] = $dados["id_usuario"];
         $_SESSION ["login"] = $dados["login"];
         $_SESSION ["senha"] = $dados["senha"];
         $_SESSION ["nivel"] = $dados["nivel"];
@@ -121,7 +130,7 @@ if (isset($_SESSION["login"]) && isset($_SESSION["senha"])) {
 if ($acao == "logout") {
     setcookie("logado", "");
     setcookie("nivel", "");
-    unset($_SESSION["login"], $_SESSION["senha"], $_SESSION["nivel"]);
+    unset($_SESSION["login"], $_SESSION["senha"], $_SESSION["nivel"], $_SESSION["id"]);
     echo "<meta HTTP-EQUIV='refresh' content='0; url=pagina_principal.php'>";
 }
 ?>

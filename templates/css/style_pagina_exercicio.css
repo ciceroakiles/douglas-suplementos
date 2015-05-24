@@ -1,0 +1,18 @@
+#tabela_exercicio {
+    width: 50%;
+    margin: 0px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 30px #000;
+    border: 2px solid #757575
+}
+
+#tabela_exercicio thead tr {
+    background-color: #757575;
+    color: #fff;
+    height: 25px;
+}
+
+.border_tr {
+    border-bottom: 3px solid #00695C;
+    height: 40px;
+}

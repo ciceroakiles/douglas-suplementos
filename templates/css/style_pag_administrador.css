@@ -1,3 +1,65 @@
+#criar_exercicio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 310px;
+    margin-top: -175px;
+    margin-left: -150px;
+    z-index: 20;
+    background-color: #fff;
+    border-radius: 3px;
+    border: 2px solid #263238;
+    box-shadow: 0 0 20px #222222;
+}
+
+#header_janela_exercicio {
+    width: 100%;
+    height: 50px;
+    background-color: #d8d3d3;
+}
+
+.texto_header_janela_exercicio {
+    margin: 0px;
+    display: inline-block;
+    position: relative;
+    top: 15px;
+    left: 20px;
+}
+
+.botao_sair_exercicio {
+    float: right;
+    position: relative;
+    right: 10px;
+    top: 8px;
+    color: #B71C1C;
+    font-size: 20px;
+    margin: 0px;
+}
+
+#semanas_janela_exercicio {
+    height: 130px;
+    width: 146px;
+    text-align: left;
+    padding-top: 20px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+#exercicio {
+    width: 280px;
+    margin-left: 8px;
+}
+
+#botao_janela_exercicio {
+    float: right;
+    margin-right: 20px;
+    width: 150px;
+    height: 30px;
+    background-color: #00695C;
+    border: none;
+    color: #fff;
+}
 
 #janela_conteudo {
     position: relative;
@@ -13,7 +75,7 @@
     text-align: center;
 }
 
-#produtos_cabecalho {
+.produtos_cabecalho {
     margin-top: 50px;
     color: #00695C;
     text-align: left;
@@ -55,4 +117,17 @@ td {
     outline: none;
     resize: none;
     padding: 5px;
+}
+
+.linha_produtos:hover {
+    background-color: #FFCDD2;
+}
+
+#botao_salvar {
+    background-color: transparent;
+    border: none;
+    width: 100px;
+    cursor: pointer;
+    outline: none;
+    float: right;
 }

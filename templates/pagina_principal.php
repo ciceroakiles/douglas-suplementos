@@ -54,7 +54,7 @@ if ($acao == "exibe_produto") {
 
             <?php
             $filtro = $class_produto->getFiltro();
-            $usuarios = mysql_query("SELECT * FROM produto WHERE nome_1 LIKE '%$filtro%' ORDER BY id_produto DESC");
+            $usuarios = mysql_query("SELECT * FROM produto WHERE nome LIKE '%$filtro%' ORDER BY id_produto DESC");
             $quant = mysql_num_rows($usuarios);
 
             if ($quant == 0) {
@@ -82,9 +82,9 @@ if ($acao == "exibe_produto") {
                                         <img src = "../imagem/img_modelo.svg" class = "imagem_produto" alt = "produto">
 
                                         <div class="item_conteudo_descricao">
-                                            <h2 class="item_nome"><?php echo $item["nome_2"]; ?></h2>
+                                            <h2 class="item_nome"><?php echo $item["nome"]; ?></h2>
 
-                                            <p class="item_valor"><strong><?php echo $item["valor"]; ?></strong></p>
+                                            <p class="item_valor"><strong>R$ <?php echo $item["valor"]; ?></strong></p>
                                         </div>
                                     </li>
                                 </a>
@@ -92,8 +92,6 @@ if ($acao == "exibe_produto") {
                         </ul>
                         </section>
 
-                        <footer id="footer_pagina_principal">
-                            <p style="margin: 0px; padding: 0px; margin-right: 20px">Desenvolvido por: 4SIsystem</p>
-                        </footer>
+                        <?php include './rodape.php'; ?>
                         </body>
                         </html>
