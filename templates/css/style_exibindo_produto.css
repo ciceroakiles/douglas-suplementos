@@ -86,4 +86,8 @@
     margin-top: 10px;
     width: 100%;
     padding: 15px 0;
+    background-color: #FFCDD2;
+    border: 2px solid #6F0000;
+    border-radius: 3px;
+    text-align: center;
 }

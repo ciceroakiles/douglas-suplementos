@@ -37,7 +37,7 @@ if (isset($_COOKIE["logado"])) {
 
                     var botao = document.getElementById('botao_exercicio');
 
-                    var botao_sair = document.getElementById('botao_sair');
+                    var botao_sair_exercicio = document.getElementById('botao_sair_exercicio');
 
                     janela.style.display = 'none';
 
@@ -46,11 +46,11 @@ if (isset($_COOKIE["logado"])) {
                         return false;
                     };
 
-                    botao_sair.onclick = function () {
+                    botao_sair_exercicio.onclick = function () {
                         janela.style.display = 'none';
                         return false;
                     };
-                }
+                };
             </script>
         </head>
         <body>
@@ -58,7 +58,7 @@ if (isset($_COOKIE["logado"])) {
             <section id="criar_exercicio" style="display: none">
                 <div id="header_janela_exercicio">
                     <p class="texto_header_janela_exercicio">Criando exercício</p>
-                    <a href="" id="botao_sair"><p class="botao_sair_exercicio"><strong>x</strong></p></a>
+                    <a href="" id="botao_sair_exercicio"><p class="botao_sair_exercicio"><strong>x</strong></p></a>
                 </div>
                 <form method="post" action="">
                     <div id="semanas_janela_exercicio">
@@ -202,7 +202,7 @@ if (isset($_COOKIE["logado"])) {
 
 
 <?php } else { ?>
-    <script>alert("Vc não está logado ainda, Faça o login!");</script>
+    <script>alert("Você não está logado ainda. Faça o login!");</script>
 
     <meta HTTP-EQUIV='refresh' content='0; url=pagina_principal.php'>
     <?php

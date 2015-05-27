@@ -37,6 +37,7 @@ if ($acao == "exibe_produto") {
 
         <link rel="stylesheet" type="text/css" href="css/style_geral.css">
         <link rel="stylesheet" type="text/css" href="css/style_pagina_principal.css">
+
     </head>
     <body>
 

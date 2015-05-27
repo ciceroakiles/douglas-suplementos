@@ -33,14 +33,27 @@ input {
     width: 180px;
 }
 
-.mensage {
-    width: 250px;
-    border-radius: 3px;
-    border: 1px solid #B71C1C;
-    background-color: #FFCDD2;
-    padding: 5px 0px;
-    text-align: center;
-    margin-bottom: 10px;
+#mensage {
+    position: relative;
+    top: -28px;
+    float: right;
+    color: #B71C1C;
+}
+
+#botao_sair{
+    position: relative;
+    top: -15px;
+    right: -15px;
+    margin: 0px;
+    width: 15px;
+    height: 15px;
+    float: right;
+    background-color: #6F0000;
+    color: #fff;
+}
+
+#botao_sair:hover {
+    cursor: pointer;
 }
 
 .input_botao {
@@ -50,6 +63,47 @@ input {
     border: 9px solid #a2a2a2;
     margin: 0px 20px 0px 0px;
     padding: 5px;
+}
+
+#criando_conta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+    margin-top: -155px;
+    margin-left: -143px;
+    width: 250px;
+    padding: 30px;
+    border: 2px solid #efefef;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 0 20px #000;
+}
+
+.botao_cadastrar {
+    height: 30px;
+    width: 48%;
+    background-color: #fff;
+    border: 1px solid #414141;
+    border-bottom: 2.5px solid #414141;
+}
+
+.botao_cadastrar:hover {
+    cursor: pointer;
+    background-color: #01579B;
+}
+
+.botao_sair_cabecalho {
+    float: right;
+    position: relative;
+    top: -20px;
+    right: -20px;
+    background-color: #6F0000;
+    color: #fff;
+    width: 15px;
+    font-size: 15px;
+    margin: 0px;
+    text-align: center;
 }
 
 /* Estilo da pagina principal */

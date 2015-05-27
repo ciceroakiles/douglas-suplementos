@@ -30,14 +30,14 @@ if ($acao == "botao_comprar") {
     $usuario = mysql_fetch_array(mysql_query("SELECT * FROM usuario WHERE id_usuario = $id"));
     $saldo_usuario = $usuario["saldo"];
     $valor_compra = $produto["valor"] * $quant_compra;
-    
+
     if ($saldo_usuario >= $valor_compra) {
         $novo_saldo = $usuario["saldo"] - $valor_compra;
         $nova_quant = $produto["quantidade"] - $quant_compra;
-        
+
         mysql_query("UPDATE usuario SET saldo = $novo_saldo WHERE id_usuario = $id");
         mysql_query("UPDATE produto SET quantidade = $nova_quant WHERE id_produto = $get_produto");
-        
+
         $msg = "Produto comprado!!";
     } else {
         $msg = "Esse usuário não tem saldo suficiente para realizar a compra.";
@@ -57,7 +57,7 @@ if ($acao == "botao_comprar") {
     </head>
     <body>
 
-<?php include './cabecalho.php'; ?>
+        <?php include './cabecalho.php'; ?>
 
         <section id="titulo_produto_campo">
             <h1 id="titulo_produto"><?php echo $produto["nome"] ?></h1>
@@ -81,7 +81,7 @@ if ($acao == "botao_comprar") {
                     <label>Quantidade: </label><br />
                     <input type="number" min="1" max="<?php echo $produto["quantidade"] ?>" value="1" name="quant" id="quant" ><br />
 
-<?php if (isset($_COOKIE["nivel"])) { ?>
+                    <?php if (isset($_COOKIE["nivel"])) { ?>
                         <?php if ($_COOKIE["nivel"] == 0) { ?>
                             <input type="submit" formaction="?acao=botao_comprar&amp;get_produto=<?php echo $produto["id_produto"]; ?>" id="botao_comprar" value="Comprar" />
                             <?php
@@ -96,7 +96,7 @@ if ($acao == "botao_comprar") {
                     ?>
                 </form>
 
-<?php if (isset($msg)) { ?>
+                <?php if (isset($msg)) { ?>
                     <div class="mensage"><?php echo $msg ?></div>
                 <?php } ?>
             </div>
@@ -106,7 +106,7 @@ if ($acao == "botao_comprar") {
             <h2 id="detalhes_tecnicos_produtos_marcador">Especificações Técnicas</h2>
 
             <p id="detalhes_tecnicos_produtos_descricao">
-<?php echo $produto["descricao"] ?>
+                <?php echo $produto["descricao"] ?>
             </p>
         </div>
 

@@ -96,7 +96,7 @@ td {
     text-align: center;
 }
 
-#botao_salvar_produto {
+.botao_salvar_produto {
     display: inline-block;
     position: relative;
     top: 10px;

@@ -156,7 +156,7 @@ if (isset($_COOKIE["logado"])) {
 
 
 <?php } else { ?>
-    <script>alert("Vc não está logado ainda, Faça o login!");</script>
+    <script>alert("Você não está logado ainda. Faça o login!");</script>
 
     <meta HTTP-EQUIV='refresh' content='0; url=pagina_principal.php'>
     <?php

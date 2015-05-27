@@ -65,7 +65,7 @@ if (isset($_COOKIE["logado"])) {
                         ?>
                         <tr class="linha_produtos">
                             <td style="text-align: left">
-                                <a href="?acao=alterando_produto&amp;get_produto=<?php echo $item["id_produto"]; ?>"><?php echo $item["nome"]; ?></a>
+                                <a id="item" href="?acao=alterando_produto&amp;get_produto=<?php echo $item["id_produto"]; ?>"><?php echo $item["nome"]; ?></a>
                             </td>
                             <td><?php echo $item["quantidade"]; ?></td>
                             <td><?php echo $item["valor"]; ?></td>
@@ -113,7 +113,7 @@ if (isset($_COOKIE["logado"])) {
                         <input type="number" name="quant" id="quant" min="1" value="<?php
                         if (isset($produto)) {
                             echo $produto["quantidade"];
-                        }else{
+                        } else {
                             echo 1;
                         }
                         ?>"/>
@@ -135,7 +135,7 @@ if (isset($_COOKIE["logado"])) {
                         <input type="" name="valor" id="valor" style="border: 1px solid #00695C; border-radius: 3px; background-color: #d6fed7; text-align: right;" maxlength="20" onkeyup="mascara(this, real)" value="<?php
                         if (isset($produto)) {
                             echo $produto["valor"];
-                        }else{
+                        } else {
                             echo 0;
                         }
                         ?>"/>
@@ -143,10 +143,10 @@ if (isset($_COOKIE["logado"])) {
 
                     <div style="text-align: right">
                         <?php if (isset($produto)) { ?>
-                            <input type="submit" formaction="?acao=alterar_produto&amp;get_produto=<?php echo $produto["id_produto"]; ?>" value="Alterar" id="botao_salvar_produto">
-                            <input type="submit" formaction="?acao=deletar_produto&amp;get_produto=<?php echo $produto["id_produto"]; ?>" value="Deletar" id="botao_salvar_produto">
+                            <input type="submit" formaction="?acao=alterar_produto&amp;get_produto=<?php echo $produto["id_produto"]; ?>" value="Alterar" id="botao_alterar_produto" class="botao_salvar_produto">
+                            <input type="submit" formaction="?acao=deletar_produto&amp;get_produto=<?php echo $produto["id_produto"]; ?>" value="Deletar" id="botao_deletar_produto" class="botao_salvar_produto">
                         <?php } else { ?>
-                            <input type="submit" formaction="?acao=salvar_produto" value="Salvar" id="botao_salvar_produto">
+                            <input type="submit" formaction="?acao=salvar_produto" value="Salvar" id="botao_salvar_produto" class="botao_salvar_produto">
                         <?php } ?>
                     </div>
                 </form>
@@ -159,7 +159,7 @@ if (isset($_COOKIE["logado"])) {
 
 <?php } else {
     ?>
-    <script>alert("Vc não está logado ainda ou não tem permissão, Faça o login!");</script>
+    <script>alert("Você não está logado ainda. Faça o login!");</script>
 
     <meta HTTP-EQUIV='refresh' content='0; url=pagina_principal.php'>
     <?php
