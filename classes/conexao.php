@@ -15,7 +15,7 @@ class conexao {
     }
 
     private function selecionarBd() {
-        $conexao = mysql_connect("localhost", "root", "");
+        $conexao = mysql_connect("127.0.0.1:3306", "root", "senharoot");
         $selectdb = mysql_select_db("ds", $conexao);
         mysql_query("SET NAMES utf8", $conexao);
 

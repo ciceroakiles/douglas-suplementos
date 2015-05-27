@@ -19,18 +19,23 @@ class SeleniumTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->setBrowser("*googlechrome");
         $this->setBrowserUrl("http://localhost/douglas_suplementos/index.php");
     }
-
-    public function test() {
+    
+    function carregaPagina() {
         // Teste de carregamento (principal)
         $this->open("http://localhost/douglas_suplementos/index.php");
         $this->waitForPageToLoad();
         $this->assertEquals('Vendas de suplemento', $this->getTitle());
+    }
+    
+    function buscaItem() {
+        // Teste de busca
+        $search = "Fiat";
+        $this->type("css=input#input_buscar_principal", $search);
+        $this->click("css=input#input_botao_buscar");
+        $this->assertContains($search, ($this->getText("css=h2.item_nome")));
+    }
 
-        // Teste de busca (investigar strtoupper, strtolower)
-//        $search = "Fiat";
-//        $this->type("css=input#input_buscar_principal", $search);
-//        $this->click("css=input#input_botao_buscar");
-//        $this->assertContains($search, ($this->getText("css=h2.item_nome")));
+    function login() {
         // Teste de login
         $login = "admin";
         $senha = "admin";
@@ -39,31 +44,37 @@ class SeleniumTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->click("css=input#botao_entrar");
         $this->waitForPageToLoad();
         $this->assertContains('admin', $this->getText("css=div#logado"));
-
+    }
+    
+    function carregaProdutos() {
         // Teste de carregamento (produtos)
         $this->open("http://localhost/douglas_suplementos/templates/pagina_produto.php");
         $this->waitForPageToLoad();
         $this->assertContains('Listando produtos', $this->getText("css=h2.produtos_cabecalho"));
-
+    }
+    
+    function novoProduto() {
         // Teste de criação de produto
         $nome = "Teste";
-//        $modelo = "Modelo";
-//        $categ = "Categoria";
+        $modelo = "Modelo";
+        $categ = "Categoria";
         $qtde = "2";
-//        $desc = "Descrição";
+        $desc = "Descrição";
         $valor = "100";
-//        $this->type("css=input#nome", $nome);
-//        $this->type("css=input#modelo", $modelo);
-//        $this->type("css=input#categoria", $categ);
-//        $this->type("css=input#quant", $qtde);
-//        $this->type("css=textarea.descricao", $desc);
-//        $this->type("css=input#valor", $valor);
-//        $this->click("css=input#botao_salvar_produto");
-//        $this->waitForPageToLoad();
+        $this->type("css=input#nome", $nome);
+        $this->type("css=input#modelo", $modelo);
+        $this->type("css=input#categoria", $categ);
+        $this->type("css=input#quant", $qtde);
+        $this->type("css=textarea.descricao", $desc);
+        $this->type("css=input#valor", $valor);
+        $this->click("css=input#botao_salvar_produto");
+        $this->waitForPageToLoad();
         $this->assertContains($nome, $this->getText("css=tr.linha_produtos"));
         $this->assertContains($qtde, $this->getText("css=tr.linha_produtos"));
         $this->assertContains($valor, $this->getText("css=tr.linha_produtos"));
-
+    }
+    
+    function alterarProduto() {
         // Teste de alteração de produto
         $nome = "Teste 2";
         $modelo = "Modelo 2";
@@ -84,16 +95,30 @@ class SeleniumTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->type("css=textarea.descricao", $desc);
         $this->type("css=input#valor", "");
         $this->type("css=input#valor", $valor);
-        $this->click("css=input#botao_salvar_produto");
+        $this->click("css=input#botao_alterar_produto.botao_salvar_produto");
         $this->waitForPageToLoad();
         $this->assertContains($nome, $this->getText("css=tr.linha_produtos"));
         $this->assertContains($qtde, $this->getText("css=tr.linha_produtos"));
         $this->assertContains($valor, $this->getText("css=tr.linha_produtos"));
-        
-        // Teste de deleção de produto
-        
     }
-
+    
+    function excluirProduto() {
+        // Teste de deleção de produto
+        $nome = "Teste 2";
+        $this->click("css=a#item");
+        $this->assertContains($nome, $this->getText("css=tr.linha_produtos"));
+        $this->click("css=input#botao_deletar_produto.botao_salvar_produto");
+        $this->waitForPageToLoad();
+        $this->assertNotEquals($nome, $this->getText("css=tr.linha_produtos"));
+    }
+    
+    public function test() {
+        $this->carregaPagina();
+        $this->login();
+        $this->carregaProdutos();
+        $this->excluirProduto();
+    }
+    
 }
 
 ?>
