@@ -59,7 +59,7 @@ if (isset($_COOKIE["logado"])) {
         </head>
         <body>
 
-            <section id="fundo_transparente" style="display: none">
+            <section id="fundo_transparente" class="animacao" style="display: none">
                 <div id="criar_exercicio">
                     <div id="header_janela_exercicio">
                         <p class="texto_header_janela_exercicio">Criando exercício</p>

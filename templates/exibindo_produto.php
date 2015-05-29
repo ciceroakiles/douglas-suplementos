@@ -3,6 +3,10 @@
 ob_start();
 session_start();
 
+//bloqueando erros
+error_reporting(0);
+ini_set(display_errors, 0);
+
 include '../classes/conexao.php';
 include '../classes/produto.php';
 include '../classes/controle_acesso.php';

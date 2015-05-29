@@ -143,26 +143,32 @@ if ($acao == "logout") {
     </nav>
 </section>
 
-<div id="criando_conta" style="display: <?php echo $display_criando_conta; ?>">
-    <a href="?acao=sair_criar_conta">
-        <p class="botao_sair_cabecalho">x</p>
-    </a>
+<div id="fundo_transparente" style="display: <?php echo $display_criando_conta; ?>">
+    <div id="criando_conta">
 
-    <form action="" method="post">
-        <label for="email">Email: </label>
-        <input type="text" id="email" maxlength="50" name="email" value="" autofocus/>
+        <a href="?acao=sair_criar_conta">
+            <p class="botao_sair_cabecalho">x</p>
+        </a>
 
-        <label for="login">Login: </label>
-        <input type="text" id="login" maxlength="50" name="login" value="" />
+        <form action="" method="post">
+            <br />
+            <label for="email">Email: </label>
+            <input type="text" id="email" maxlength="50" name="email" value="" autofocus/>
 
-        <label for="senha" >Senha: </label>
-        <input type="password" id="senha" maxlength="50" name="senha" value="" />
+            <label for="login">Login: </label>
+            <input type="text" id="login" maxlength="50" name="login" value="" />
 
-        <label for="senha2" >Confirme a senha: </label>
-        <input type="password" id="senha2" maxlength="50" name="senha2" value="" />
+            <label for="senha" >Senha: </label>
+            <input type="password" id="senha" maxlength="50" name="senha" value="" />
 
-        <center>
-            <input type="submit" formaction="?acao=cadastrar" class="botao_cadastrar animacao" value="Salvar" />
-        </center>
-    </form>
+            <label for="senha2" >Confirme a senha: </label>
+            <input type="password" id="senha2" maxlength="50" name="senha2" value="" />
+
+            <center>
+                <input type="submit" formaction="?acao=cadastrar" class="botao_salvar_cadastro animacao" value="Salvar" />
+            </center>
+        </form>
+
+    </div>
+
 </div>
