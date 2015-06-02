@@ -100,7 +100,7 @@ if ($acao == "logout") {
         } else {
             ?>
             <div id="logado">
-                Bem vindo: <?php echo $_SESSION["login"] ?><br />
+                Bem-vindo, <?php echo $_SESSION["login"] ?><br />
                 <a href="?acao=logout" style="color: #ff0000;">
                     sair
                 </a>

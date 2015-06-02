@@ -123,9 +123,9 @@ if (isset($_COOKIE["logado"])) {
 
                         while ($item = mysql_fetch_array($usuarios)) {
                             ?>
-                            <tr class="linha_produtos">
+                        <tr class="linha_produtos">
                                 <td style="text-align: left">
-                                    <a href="?acao=alterando_usuario&amp;get_usuario=<?php echo $item["id_usuario"]; ?>"><?php echo $item["login"]; ?></a>
+                                    <a id="linha" href="?acao=alterando_usuario&amp;get_usuario=<?php echo $item["id_usuario"]; ?>"><?php echo $item["login"]; ?></a>
                                 </td>
                                 <td><?php echo $item["email"] ?></td>
                                 <td><?php
@@ -159,7 +159,7 @@ if (isset($_COOKIE["logado"])) {
                 <section style="padding: 0px 10%">
                     <h2 class="produtos_cabecalho">Apresentando usuário</h2>
 
-                    <div style="width: 45%; height: 180px; margin-left: 10px; display: inline-block">
+                    <div style="width: 45%; height: 200px; margin-left: 10px; display: inline-block">
                         <p>Dados do usuário</p>
 
                         <label>E-mail: </label><br />
@@ -173,7 +173,7 @@ if (isset($_COOKIE["logado"])) {
                                 $id = $usuario["id_usuario"];
                                 echo "Cliente (";
 
-                                echo "<a href=\"?acao=cliente_adm&amp;get_usuario=$id\">Tornar-lo administrador</a>";
+                                echo "<a href=\"?acao=cliente_adm&amp;get_usuario=$id\">Torná-lo administrador</a>";
 
                                 echo ")";
                             } else if ($usuario["nivel"] == 1) {
@@ -185,7 +185,7 @@ if (isset($_COOKIE["logado"])) {
 
                     <?php if ($usuario["nivel"] == 0) { ?>
 
-                        <div style="width: 45%; float: right; display: inline-block">
+                        <div style="width: 45%; float: right; display: inline-block; position: relative; top: 20px">
                             <form method="post" action="">
                                 <label for="valor">Saldo:</label><br />
                                 <input type="text" name="saldo" id="saldo" placeholder="<?php echo $usuario["saldo"] ?>" onkeyup="mascara(this, real)" style="text-align: right">

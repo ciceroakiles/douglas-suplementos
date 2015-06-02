@@ -50,7 +50,7 @@ class SeleniumTest extends PHPUnit_Extensions_SeleniumTestCase {
         // Teste de carregamento (produtos)
         $this->open("http://localhost/douglas_suplementos/templates/pagina_produto.php");
         $this->waitForPageToLoad();
-        $this->assertContains('Listando produtos', $this->getText("css=h2.produtos_cabecalho"));
+        $this->assertEquals('Listando produtos', $this->getText("css=h2.produtos_cabecalho"));
     }
     
     function novoProduto() {
@@ -112,11 +112,17 @@ class SeleniumTest extends PHPUnit_Extensions_SeleniumTestCase {
         $this->assertNotEquals($nome, $this->getText("css=tr.linha_produtos"));
     }
     
+    function carregaUsuarios() {
+        // Teste de carregamento (usuários)
+        $this->open("http://localhost/douglas_suplementos/templates/pagina_usuario.php");
+        $this->waitForPageToLoad();
+        
+    }
+    
     public function test() {
         $this->carregaPagina();
         $this->login();
-        $this->carregaProdutos();
-        $this->excluirProduto();
+        $this->carregaUsuarios();
     }
     
 }
