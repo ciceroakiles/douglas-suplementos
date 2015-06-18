@@ -188,7 +188,7 @@ if (isset($_COOKIE["logado"])) {
                         <div style="width: 45%; float: right; display: inline-block; position: relative; top: 20px">
                             <form method="post" action="">
                                 <label for="valor">Saldo:</label><br />
-                                <input type="text" name="saldo" id="saldo" placeholder="<?php echo $usuario["saldo"] ?>" onkeyup="mascara(this, real)" style="text-align: right">
+                                <input type="text" name="saldo" id="saldo" placeholder="<?php echo $usuario["saldo"] ?>" onkeyup="mascara(this, real2)" style="text-align: right">
 
                                 <input type="submit" formaction="?acao=alterar_valor&amp;get_usuario=<?php echo $usuario["id_usuario"] ?>" value="Salvar" id="botao_salvar">
                             </form>

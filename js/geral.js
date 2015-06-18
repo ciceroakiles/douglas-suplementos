@@ -7,7 +7,7 @@ function mascara(o, f) {
 
 function real(v) {
     v = v.replace(/\D/g, "");                           //Remove tudo o que não é dígito
-    v = v.replace(/(\d)(\d{2})$/, "$1.$2"); //Coloca o hífen entre o quinto e o sexto numero
+    v = v.replace(/(\d)(\d{2})$/, "$1.$2"); //Coloca o ponto entre o quinto e o sexto numero
     
     return v;
 };

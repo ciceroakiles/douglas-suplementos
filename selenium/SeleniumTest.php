@@ -116,13 +116,44 @@ class SeleniumTest extends PHPUnit_Extensions_SeleniumTestCase {
         // Teste de carregamento (usuários)
         $this->open("http://localhost/douglas_suplementos/templates/pagina_usuario.php");
         $this->waitForPageToLoad();
-        
+        $this->assertEquals('Listando usuários', $this->getText("css=h2.produtos_cabecalho"));
+    }
+    
+    function aumentarSaldoUsuario() {
+        // Teste de alteração de saldo
+        $this->click("css=a#linha");
+        $saldo = "1500";
+        $this->type("css=input#saldo", $saldo);
+        $this->click("css=input#botao_salvar");
+        $this->waitForPageToLoad();
+        $this->assertContains($saldo, $this->getText("css=tr.linha_produtos"));
+    }
+    
+    function diminuirSaldoUsuario() {
+        // Teste de alteração de saldo
+        $this->click("css=a#linha");
+        $saldo = "-1500";
+        $this->type("css=input#saldo", $saldo);
+        $this->click("css=input#botao_salvar");
+        $this->waitForPageToLoad();
+        $this->assertContains('0.00', $this->getText("css=tr.linha_produtos"));
     }
     
     public function test() {
         $this->carregaPagina();
+        
+        $this->buscaItem();
+        
         $this->login();
+        
+        $this->carregaProdutos();
+        $this->novoProduto();
+        $this->alterarProduto();
+        $this->excluirProduto();
+        
         $this->carregaUsuarios();
+        $this->aumentarSaldoUsuario();
+        $this->diminuirSaldoUsuario();
     }
     
 }

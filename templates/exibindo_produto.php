@@ -40,7 +40,11 @@ if ($acao == "botao_comprar") {
         $nova_quant = $produto["quantidade"] - $quant_compra;
 
         mysql_query("UPDATE usuario SET saldo = $novo_saldo WHERE id_usuario = $id");
-        mysql_query("UPDATE produto SET quantidade = $nova_quant WHERE id_produto = $get_produto");
+        if ($nova_quant > 0) {
+            mysql_query("UPDATE produto SET quantidade = $nova_quant WHERE id_produto = $get_produto");
+        } else {
+            mysql_query("DELETE FROM produto WHERE id_produto = $get_produto");
+        }
 
         $msg = "Produto comprado!!";
     } else {
@@ -87,7 +91,7 @@ if ($acao == "botao_comprar") {
 
                     <?php if (isset($_COOKIE["nivel"])) { ?>
                         <?php if ($_COOKIE["nivel"] == 0) { ?>
-                            <input type="submit" formaction="?acao=botao_comprar&amp;get_produto=<?php echo $produto["id_produto"]; ?>" id="botao_comprar" value="Comprar" />
+                            <input type="submit" formaction="pagina_principal.php?acao=botao_comprar&amp;get_produto=<?php echo $produto["id_produto"]; ?>" id="botao_comprar" value="Comprar" />
                             <?php
                         } else {
                             $msg = "Esse usuário é um administrador";

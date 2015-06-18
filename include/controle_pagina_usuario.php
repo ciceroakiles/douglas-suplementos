@@ -17,11 +17,16 @@ if ($acao == "alterar_valor") {
     $id = $_GET["get_usuario"];
     $usuario = mysql_fetch_array(mysql_query("SELECT * FROM usuario WHERE id_usuario = $id"));
 
+
     $credito = $usuario["saldo"] + $credito;
+    
+    if ($credito >= 0) {
+        mysql_query("UPDATE usuario SET saldo = '$credito' WHERE id_usuario = $id");
 
-    mysql_query("UPDATE usuario SET saldo = '$credito' WHERE id_usuario = $id");
-
-    echo "<meta HTTP-EQUIV='refresh' content='0; url=pagina_usuario.php'>";
+        echo "<meta HTTP-EQUIV='refresh' content='0; url=pagina_usuario.php'>";
+    } else {
+        echo "<script>alert('Operação invalida!');</script>";
+    }
 }
 
 if ($acao == "salvar_exercicio") {
@@ -39,25 +44,24 @@ if ($acao == "salvar_exercicio") {
     if (isset($dom)) {
         mysql_query("INSERT INTO exercicio VALUES (NULL, '$cliente', '$dom', '$exercicio')");
     }
-    if (isset ($seg)){
+    if (isset($seg)) {
         mysql_query("INSERT INTO exercicio VALUES (NULL, '$cliente', '$seg', '$exercicio')");
     }
-    if (isset ($ter)){
+    if (isset($ter)) {
         mysql_query("INSERT INTO exercicio VALUES (NULL, '$cliente', '$ter', '$exercicio')");
     }
-    if (isset ($qua)){
+    if (isset($qua)) {
         mysql_query("INSERT INTO exercicio VALUES (NULL, '$cliente', '$qua', '$exercicio')");
     }
-    if (isset ($qui)){
+    if (isset($qui)) {
         mysql_query("INSERT INTO exercicio VALUES (NULL, '$cliente', '$qui', '$exercicio')");
     }
-    if (isset ($sex)){
+    if (isset($sex)) {
         mysql_query("INSERT INTO exercicio VALUES (NULL, '$cliente', '$sex', '$exercicio')");
     }
-    if (isset ($sab)){
+    if (isset($sab)) {
         mysql_query("INSERT INTO exercicio VALUES (NULL, '$cliente', '$sab', '$exercicio')");
     }
-        
 }
 
 if ($acao == "cliente_adm") {
